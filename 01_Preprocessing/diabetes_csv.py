@@ -24,6 +24,10 @@ feature_cols = ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness',
 X = data[feature_cols]
 y = data.Outcome
 
+# Removendo valores faltantes
+X = X.dropna()
+y = y[X.index]
+
 # Ciando o modelo preditivo para a base trabalhada
 print(' - Criando modelo preditivo')
 neigh = KNeighborsClassifier(n_neighbors=3)
@@ -39,7 +43,7 @@ y_pred = neigh.predict(data_app)
 URL = "https://aydanomachado.com/mlclass/01_Preprocessing.php"
 
 #TODO Substituir pela sua chave aqui
-DEV_KEY = "COLOCAR_SUA_KEY_AQUI"
+DEV_KEY = "GiGa"
 
 # json para ser enviado para o servidor
 data = {'dev_key':DEV_KEY,
