@@ -11,6 +11,7 @@ no servidor.
 
 import pandas as pd
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.preprocessing import StandardScaler
 import requests
 
 print('\n - Lendo o arquivo com o dataset sobre diabetes')
@@ -27,6 +28,10 @@ y = data.Outcome
 # Removendo valores faltantes
 X = X.dropna()
 y = y[X.index]
+
+# Normalizando os dados
+scaler = StandardScaler()
+X = scaler.fit_transform(X)
 
 # Ciando o modelo preditivo para a base trabalhada
 print(' - Criando modelo preditivo')
